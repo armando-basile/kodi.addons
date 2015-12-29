@@ -1,0 +1,6 @@
+v0.1.0 (2015-12-28)
+- First release
+
+v0.1.1 (2015-12-29)
+- added remote config file to reduce user configuration
+

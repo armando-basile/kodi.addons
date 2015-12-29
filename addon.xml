@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.program.xmltv.updater" name="XMLTV Updater" version="0.1.1" provider-name="hman">
+    <requires>
+        <import addon="xbmc.python" version="2.14.0"/>
+    </requires>
+    <extension point="xbmc.python.script" library="addon.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en">Updater XMLTV file</summary>
+        <description lang="en">Update XMLTV file from Rytec repo to use it to show EPG</description>
+        <license>GNU General Public License, v2</license>
+        <language></language>
+        <!-- <forum>http://forum.kodi.tv/showthread.php?tid=...</forum> -->
+        <source>https://github.com/armando-basile/plugin.program.xmltv.updater</source>
+        <email>hmandevteam@gmail.com</email>
+    </extension>
+</addon>

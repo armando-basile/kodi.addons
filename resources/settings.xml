@@ -1,0 +1,3 @@
+<settings>
+    <setting id="out_path" type="folder" source="auto" option="writeable" label="30103" default="/tmp"/>
+</settings>

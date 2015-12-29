@@ -1,0 +1,12 @@
+<strings>
+    <string id="30001">Scarica il file xmltv di Rytec per l'epg</string>
+    <string id="30002">Vuoi aggiornare il file xmltv ?</string>
+    <string id="30003">Applicazione terminata</string>
+    <string id="30004">Errore rilevato durante il download del file xmltv</string>
+    <string id="30005">Errore rilevato durante il download del file di configurazione</string>
+    <string id="30006">Download file di configurazione</string>
+    <string id="30007">Aggiornamento riuscito</string>
+    <string id="30008">Download file xmltv</string>
+
+    <string id="30103">Cartella di destinazione</string>
+</strings>
