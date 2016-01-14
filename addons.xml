@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
 <addon id="plugin.program.xmltv.updater" name="XMLTV Updater" version="0.1.1" provider-name="hman">
     <requires>
         <import addon="xbmc.python" version="2.14.0"/>
@@ -19,3 +20,4 @@
         <email>hmandevteam@gmail.com</email>
     </extension>
 </addon>
+</addons>
