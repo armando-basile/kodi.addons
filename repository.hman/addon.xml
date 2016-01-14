@@ -7,7 +7,9 @@
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary lang="en">hman's Kodi Addon Repository</summary>
+		<summary lang="it">Il Repository di Addon per Kodi di hman</summary>
 		<description lang="en">Download and install hman's addon repository</description>
+		<description lang="it">Scarica e installa gli addon di hman</description>
 		<disclaimer></disclaimer>
 		<platform>all</platform>
 	</extension>

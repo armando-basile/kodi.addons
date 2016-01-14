@@ -1,0 +1,15 @@
+<strings>
+    <string id="30001">Aggiunge le informazioni di EPG alle liste canali di IPTVSpecial.</string>
+    <string id="30002">Vuoi aggiornare le liste canali ?</string>
+    <string id="30003">Applicazione terminata</string>
+    <string id="30004">Errore rilevato durante il download del file di configurazione</string>
+    <string id="30005">Errore rilevato durante il download dei file m3u</string>
+    <string id="30006">Errore nel file di configurazione per </string>
+    <string id="30007">Aggiornamento riuscito</string>
+    <string id="30008">Download in corso...</string>
+    <string id="30009">Aggiornamento lista in corso...</string>
+
+    <string id="30103">Cartella di destinazione</string>
+    <string id="30104">M3U Username</string>
+    <string id="30105">M3U Password</string>
+</strings>
