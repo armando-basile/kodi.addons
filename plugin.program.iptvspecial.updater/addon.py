@@ -18,11 +18,13 @@ _password_   = _addon_.getSetting('password')
 _url_m3u_    = ""
 _url_config_ = "http://pastebin.com/raw/pYAFsBZL"
 
-_orig_name_  = "iptvspecial-live.orig.m3u"
-_live_name_  = "iptvspecial-live.m3u"
-_vod_name_   = "iptvspecial-vod.m3u"
-_xxx_name_   = "iptvspecial-xxx.m3u"
-_conf_name_  = "iptvspecial.conf"
+_live_orig_name_  = "iptvspecial-live.orig.m3u"
+_vod_orig_name_   = "iptvspecial-vod.orig.m3u"
+_xxx_orig_name_   = "iptvspecial-xxx.orig.m3u"
+_live_name_       = "iptvspecial-live.m3u"
+_vod_name_        = "iptvspecial-vod.m3u"
+_xxx_name_        = "iptvspecial-xxx.m3u"
+_conf_name_       = "iptvspecial.conf"
 
 output_list = list()
 output_list_cid = list()
@@ -82,13 +84,13 @@ def __parse_config_file():
 
 
 
-# add epg info into live channels list
-def __update_live_content():
+# add epg info into channels list file
+def __update_content(channels_list, is_live):
     # init string for output content
     o_file = ""
     
     # open input file and read all lines
-    file = open(_out_path_ + '/' + _orig_name_, "r")
+    file = open(_out_path_ + '/' + channels_list, "r")
     lines = file.readlines()
     file.close()
 
@@ -104,32 +106,41 @@ def __update_live_content():
             c_name = line[c_pos+1:].strip()
 
             # check for channels group
-            if string.find(c_name, '----') == 0:
+            if (string.find(c_name, '---') == 0) or (string.find(c_name, '###') == 0):
                 # channels group detected
-                c_group = c_name.replace('----','').strip()
+                c_group = c_name.replace('-','').strip()
+                c_group = c_group.replace('#','').strip()
                 o_file += line.replace('#EXTINF:-1', 
                                            '#EXTINF:-1 ' + 
                                            'group-title="' + c_group + '"') + "\n"
             
             else:
-                # check for channel presence
-                if c_name in output_list:
-                    # get cid from config file
-                    s_pos = output_list.index(c_name)
-                    c_cid = output_list_cid[s_pos]
-                    
-                    # update line
-                    o_file += line.replace('#EXTINF:-1', 
-                                           '#EXTINF:-1 ' + 
-                                           'tvg-id="' + c_cid + '" ' +
-                                           'tvg-logo="' + c_cid + '"') + "\n"
-             
+                # check for live list only
+                if is_live == True:
+                    # check for channel presence
+                    if c_name in output_list:
+                        # get cid from config file
+                        s_pos = output_list.index(c_name)
+                        c_cid = output_list_cid[s_pos]
+                        
+                        # update line
+                        o_file += line.replace('#EXTINF:-1', 
+                                               '#EXTINF:-1 ' + 
+                                               'tvg-id="' + c_cid + '" ' +
+                                               'tvg-logo="' + c_cid + '"') + "\n"
+                 
+                    else:
+                        # channel not in list, adding
+                        o_file += line + "\n"
+                        
                 else:
-                    # channel not in list, adding
+                    # not in live list, adding
                     o_file += line + "\n"
-
+                
+                
         else:
-            # no channel header, adding
+            # no channel header, update file extension from .ts to .m3u8
+            line = line.replace('.ts', '.m3u8')
             o_file += line + "\n"
             
     
@@ -185,13 +196,13 @@ if dialog:
     
     try:
         # try to get m3u files
-        dlfile.retrieve(_url_live_, _out_path_ + '/' + _orig_name_)
-        dlfile.retrieve(_url_vod_,  _out_path_ + '/' + _vod_name_)
-        dlfile.retrieve(_url_xxx_,  _out_path_ + '/' + _xxx_name_)
+        dlfile.retrieve(_url_live_, _out_path_ + '/' + _live_orig_name_)
+        dlfile.retrieve(_url_vod_,  _out_path_ + '/' + _vod_orig_name_)
+        dlfile.retrieve(_url_xxx_,  _out_path_ + '/' + _xxx_orig_name_)
         pbar.update(65)
 
         # detect file size
-        file = open(_out_path_ + '/' + _orig_name_, "r")
+        file = open(_out_path_ + '/' + _live_orig_name_, "r")
         _filesize_ = 1
         if (file.read(1) == ""):
             _filesize_ = 0
@@ -215,13 +226,30 @@ if dialog:
     pbar.update(70, _lang_(30009))
 
     # update live content
-    _new_content_ = __update_live_content()
-    pbar.update(90)
-
+    _new_content_ = __update_content(_live_orig_name_, True)
     # write new file
     file = open(_out_path_ + '/' + _live_name_, "w")
     file.write(_new_content_)
     file.close()
+    
+    # update vod content
+    _new_content_ = __update_content(_vod_orig_name_, False)
+    # write new file
+    file = open(_out_path_ + '/' + _vod_name_, "w")
+    file.write(_new_content_)
+    file.close()
+    
+    
+    # update xxx content
+    _new_content_ = __update_content(_xxx_orig_name_, False)
+    # write new file
+    file = open(_out_path_ + '/' + _xxx_name_, "w")
+    file.write(_new_content_)
+    file.close()
+    
+    
+    pbar.update(90)
+
     
     pbar.close()
     xbmc.executebuiltin('StartPVRManager')
