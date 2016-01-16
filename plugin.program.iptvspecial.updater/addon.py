@@ -127,7 +127,7 @@ def __update_content(channels_list, is_live):
                         o_file += line.replace('#EXTINF:-1', 
                                                '#EXTINF:-1 ' + 
                                                'tvg-id="' + c_cid + '" ' +
-                                               'tvg-logo="' + c_cid + '"') + "\n"
+                                               'tvg-logo="' + c_cid + '.png"') + "\n"
                  
                     else:
                         # channel not in list, adding
