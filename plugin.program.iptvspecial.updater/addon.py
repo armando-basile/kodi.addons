@@ -5,6 +5,7 @@ import sys
 import string
 import urllib
 import zipfile
+import contextlib
 
 
 _addon_      = xbmcaddon.Addon()
@@ -150,6 +151,13 @@ def __update_content(channels_list, is_live):
 
 
 
+# unzip file with python 2.6 
+def __unzip(source, target):
+    with contextlib.closing(zipfile.ZipFile(source , "r")) as z:
+        z.extractall(target)
+
+
+
 
 
 
@@ -285,8 +293,8 @@ if dialog:
         xbmcgui.Dialog().notification(_addonname_, _lang_(30011), xbmcgui.NOTIFICATION_ERROR, 10000)
         sys.exit(0)
     
-    with zipfile.ZipFile(_out_path_ + '/' + _logos_name_, "r") as z:
-        z.extractall(_out_path_)
+    # unzip logo folder
+    __unzip(_out_path_ + '/' + _logos_name_, _out_path_)
     
     
     pbar.close()
