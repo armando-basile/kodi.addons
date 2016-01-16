@@ -4,7 +4,7 @@ import xbmc
 import sys
 import string
 import urllib
-
+import zipfile
 
 
 _addon_      = xbmcaddon.Addon()
@@ -17,6 +17,8 @@ _password_   = _addon_.getSetting('password')
 
 _url_m3u_    = ""
 _url_config_ = "http://pastebin.com/raw/pYAFsBZL"
+_logos_url_  = "https://codeload.github.com/armando-basile/tv-logos/zip/master"
+_logos_name_ = "tv-logos.zip"
 
 _live_orig_name_  = "iptvspecial-live.orig.m3u"
 _vod_orig_name_   = "iptvspecial-vod.orig.m3u"
@@ -152,19 +154,17 @@ def __update_content(channels_list, is_live):
 
 
 
-
-
+# downloader
+dlfile = urllib.URLopener()
 
 
 # show main dialog before start update process
 dialog = xbmcgui.Dialog().yesno(_addonname_, _lang_(30001), "", _lang_(30002))
 
-# check for exit
+# check for no list update
 if dialog:
     # update request
 
-    dlfile = urllib.URLopener()
-    
     # create progress bar
     pbar = xbmcgui.DialogProgress()
     pbar.create(_addonname_, _lang_(30008))
@@ -258,17 +258,46 @@ if dialog:
     xbmcgui.Dialog().ok(_addonname_, _lang_(30007))
     
     
+
+
+
+
+# show main dialog before start update logos process
+dialog = xbmcgui.Dialog().yesno(_addonname_, _lang_(30010))
+
+# check for no logos update
+if dialog:
+    # update request
+
+    # create progress bar
+    pbar = xbmcgui.DialogProgress()
+    pbar.create(_addonname_, _lang_(30008))
+    pbar.update(50)
+    
+    try:
+        # try to get logos
+        dlfile.retrieve(_logos_url_, _out_path_ + '/' + _logos_name_)
+        pbar.update(75)
+        
+    except Exception, ex:
+        # error detected
+        pbar.close()
+        xbmcgui.Dialog().notification(_addonname_, _lang_(30011), xbmcgui.NOTIFICATION_ERROR, 10000)
+        sys.exit(0)
+    
+    with zipfile.ZipFile(_out_path_ + '/' + _logos_name_, "r") as z:
+        z.extractall(_out_path_)
+    
+    
+    pbar.close()
+
+    # update successful
+    xbmcgui.Dialog().ok(_addonname_, _lang_(30007))
+    
 else:
     # exit without perform update
     xbmcgui.Dialog().ok(_addonname_, _lang_(30003))
     sys.exit(0)
-
-
-
-
-
-
-
 
 
 
