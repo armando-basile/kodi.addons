@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="plugin.program.iptvspecial.updater" name="IPTVSpecial Updater" version="0.1.7" provider-name="hman">
+<addon id="plugin.program.iptvspecial.updater" name="IPTVSpecial Updater" version="0.1.8" provider-name="hman">
     <requires>
         <import addon="xbmc.python" version="2.19.0"/>
     </requires>
