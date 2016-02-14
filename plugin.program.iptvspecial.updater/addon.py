@@ -183,11 +183,6 @@ def __update_vod_content(channels_list):
                 c_group = c_name.replace('-','').strip()
                 c_group = c_group.replace('#','').strip()
                 c_group = c_group.replace(' ','_').strip()
-                c_group = c_group.replace('à','a').strip()
-                c_group = c_group.replace('è','e').strip()
-                c_group = c_group.replace('ì','i').strip()
-                c_group = c_group.replace('ò','o').strip()
-                c_group = c_group.replace('ù','u').strip()
                 
                 # detect if there is a file opened
                 if o_file != "#EXTM3U\n":
