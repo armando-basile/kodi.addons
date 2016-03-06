@@ -276,11 +276,13 @@ if dialog:
         dlfile.retrieve(_url_vod_,  _out_path_ + '/' + _vod_orig_name_)
         
         # remove adult content
-        os.remove(_out_path_ + '/' + _xxx_orig_name_)
-        os.remove(_out_path_ + '/' + _xxx_name_)
+        if os.path.exists(_out_path_ + '/' + _xxx_orig_name_):
+            os.remove(_out_path_ + '/' + _xxx_orig_name_)
+        if os.path.exists(_out_path_ + '/' + _xxx_name_):
+            os.remove(_out_path_ + '/' + _xxx_name_)
 
         # check for adult content enabled
-        if (_is_adult_ == True):
+        if (_is_adult_ == "true"):
             dlfile.retrieve(_url_xxx_,  _out_path_ + '/' + _xxx_orig_name_)
         
         pbar.update(65)
@@ -333,7 +335,7 @@ if dialog:
     __update_vod_content(_vod_orig_name_)
     
     # check for adult content enabled
-    if (_is_adult_ == True):
+    if (_is_adult_ == "true"):
         # update xxx content
         _new_content_ = __update_content(_xxx_orig_name_, False)
         # write new file
