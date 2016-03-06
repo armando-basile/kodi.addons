@@ -15,6 +15,7 @@ _lang_       = _addon_.getLocalizedString
 _addonname_  = _addon_.getAddonInfo('name')
 _icon_       = _addon_.getAddonInfo('icon')
 _out_path_   = _addon_.getSetting('out_path')
+_is_adult_   = _addon_.getSetting('is_adult')
 _username_   = _addon_.getSetting('username')
 _password_   = _addon_.getSetting('password')
 
@@ -273,7 +274,15 @@ if dialog:
         # try to get m3u files
         dlfile.retrieve(_url_live_, _out_path_ + '/' + _live_orig_name_)
         dlfile.retrieve(_url_vod_,  _out_path_ + '/' + _vod_orig_name_)
-        dlfile.retrieve(_url_xxx_,  _out_path_ + '/' + _xxx_orig_name_)
+        
+        # remove adult content
+        os.remove(_out_path_ + '/' + _xxx_orig_name_)
+        os.remove(_out_path_ + '/' + _xxx_name_)
+
+        # check for adult content enabled
+        if (_is_adult_ == True):
+            dlfile.retrieve(_url_xxx_,  _out_path_ + '/' + _xxx_orig_name_)
+        
         pbar.update(65)
 
         # detect file size
@@ -323,13 +332,14 @@ if dialog:
     # update vod content
     __update_vod_content(_vod_orig_name_)
     
-    
-    # update xxx content
-    _new_content_ = __update_content(_xxx_orig_name_, False)
-    # write new file
-    file = open(_out_path_ + '/' + _xxx_name_, "w")
-    file.write(_new_content_)
-    file.close()
+    # check for adult content enabled
+    if (_is_adult_ == True):
+        # update xxx content
+        _new_content_ = __update_content(_xxx_orig_name_, False)
+        # write new file
+        file = open(_out_path_ + '/' + _xxx_name_, "w")
+        file.write(_new_content_)
+        file.close()
     
     
     pbar.update(90)
