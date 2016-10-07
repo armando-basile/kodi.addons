@@ -1,0 +1,6 @@
+<settings>
+    <setting id="out_path" type="folder" source="auto" option="writeable" label="30103" default="/tmp"/>
+    <setting id="is_adult" type="bool" label="30106" default="false"/>
+    <setting id="username" type="text" label="30104" default=""/>
+    <setting id="password" type="text" option="hidden" label="30105" default=""/>
+</settings>
