@@ -150,10 +150,10 @@ def __update_content(channels_list, is_live):
             c_name = line[c_pos+1:].strip()
 
             # check for channels group
-            if (string.find(c_name, '---') == 0) or (string.find(c_name, '###') == 0):
+            if (string.find(c_name, '---') == 0) or (string.find(c_name, '===') == 0):
                 # channels group detected
                 c_group = c_name.replace('-','').strip()
-                c_group = c_group.replace('#','').strip()
+                c_group = c_group.replace('=','').strip()
                 
                 o_file += line.replace('#EXTINF:-1', 
                                            '#EXTINF:-1 ' + 
