@@ -115,8 +115,8 @@ def __split_orig():
             if content_type == "vod":
                 file_vod.write(line)
             elif ((content_type == "xxx") and (_is_adult_ == "true")):
-                file_xxx.write(line)
-            else:
+                file_xxx.write(line)            
+            elif content_type == "live":
                 file_live.write(line)
         
         file_live.close()
