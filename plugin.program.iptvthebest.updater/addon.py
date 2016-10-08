@@ -30,7 +30,7 @@ _live_name_       = "iptvthebest-live.m3u"
 _vod_name_        = "iptvthebest-vod.m3u"
 _xxx_name_        = "iptvthebest-xxx.m3u"
 _conf_name_       = "iptvthebest.conf"
-_xxx_title_       = "ADULTI LIVE"
+_xxx_title_       = "ADULTI"
 _vod_title_       = "PRIMAVISIONE"
 
 output_list = list()
