@@ -227,7 +227,14 @@ def __unzip(source, target):
 
 
 
+# ==== Entry Point ====
 
+# check for default destination path 
+if (_out_path_ == "/tmp") or (_out_path_ == "/tmp/"):
+    # destination path set required
+    xbmcgui.Dialog().ok(_addonname_, _lang_(30012))
+    xbmcaddon.Addon().openSettings()
+    sys.exit(0)
 
 
 # downloader

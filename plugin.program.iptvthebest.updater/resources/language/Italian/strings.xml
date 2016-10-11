@@ -10,6 +10,7 @@
     <string id="30009">Aggiornamento lista in corso...</string>
     <string id="30010">Vuoi aggiornare i loghi dei canali ?</string>
     <string id="30011">Errore rilevato durante il download dei loghi</string>
+    <string id="30012">Devi impostare la cartella di destinazione</string>
 
     <string id="30103">Cartella di destinazione</string>
     <string id="30104">M3U Username</string>

@@ -7,6 +7,7 @@
     <string id="30006">Download config file</string>
     <string id="30007">Update successful</string>
     <string id="30008">Download xmltv file</string>
+    <string id="30009">Need to set destination folder</string>
 
     <string id="30103">Destination folder</string>
 </strings>

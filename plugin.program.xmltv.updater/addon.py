@@ -59,7 +59,14 @@ def __parse_config_file():
 
 
 
+# ==== Entry Point ====
 
+# check for default destination path 
+if (_out_path_ == "/tmp") or (_out_path_ == "/tmp/"):
+    # destination path set required
+    xbmcgui.Dialog().ok(_addonname_, _lang_(30009))
+    xbmcaddon.Addon().openSettings()
+    sys.exit(0)
 
 
 # show main dialog before start update process
