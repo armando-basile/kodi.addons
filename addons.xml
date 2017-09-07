@@ -42,6 +42,27 @@
     </extension>
 </addon>
 
+<addon id="plugin.program.iptvsuperflussi.updater" name="IptvSuperFlussi Updater" version="0.1.0" provider-name="hman">
+    <requires>
+        <import addon="xbmc.python" version="2.19.0"/>
+    </requires>
+    <extension point="xbmc.python.script" library="addon.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en">Updater for Iptv SuperFlussi m3u channels list</summary>
+        <summary lang="it">Gestore degli aggiornamenti per le liste canali Iptv SuperFlussi</summary>
+        <description lang="en">add EPG informations into m3u channels list to show EPG</description>
+        <description lang="it">aggiunge le informazioni necessarie per la corretta visualizzazione dell'EPG</description>
+        <license>GNU General Public License, v2</license>
+        <language></language>
+        <!-- <forum>http://forum.kodi.tv/showthread.php?tid=...</forum> -->
+        <source>https://github.com/armando-basile/kodi.addons/plugin.program.iptvsuperflussi.updater</source>
+        <email>hmandevteam@gmail.com</email>
+    </extension>
+</addon>
+
 <addon id="plugin.program.xmltv.updater" name="XMLTV Updater" version="0.1.2" provider-name="hman">
     <requires>
         <import addon="xbmc.python" version="2.14.0"/>

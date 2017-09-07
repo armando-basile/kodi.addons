@@ -1,0 +1,19 @@
+<strings>
+    <string id="30001">Add EPG informations to IptvSuperFlussi channels list.</string>
+    <string id="30002">Do you want update channels list ?</string>
+    <string id="30003">Application ended</string>
+    <string id="30004">Error detected during config file download</string>
+    <string id="30005">Error detected during m3u files download</string>
+    <string id="30006">Error in config for item </string>
+    <string id="30007">Update successful</string>
+    <string id="30008">Download in progress...</string>
+    <string id="30009">Update list in progress...</string>
+    <string id="30010">Do you want update tv channels logo ?</string>
+    <string id="30011">Error detected during channels logo download</string>
+    <string id="30012">Need to set destination folder</string>
+
+    <string id="30103">Destination folder</string>
+    <string id="30104">M3U Username</string>
+    <string id="30105">M3U Password</string>
+    <string id="30106">Enable adult content</string>
+</strings>
