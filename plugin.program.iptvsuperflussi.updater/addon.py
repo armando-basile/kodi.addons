@@ -335,7 +335,7 @@ if dialog:
 
         # detect file size
         file = open(_out_path_ + '/' + _main_orig_name_, "r")
-        filesize_ = 1
+        _filesize_ = 1
         if (file.read(1) == ""):
             _filesize_ = 0
         file.close()
